@@ -23,6 +23,7 @@ public class UtenteController {
 	private ServiceUtente serviceUtente;
 
 //	/ e login portano allo stesso link  
+//	per poter prendere i dati del login dobbiamo creare un oggetto con i dati del for che mandiamo 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
 		model.addAttribute("utente", new Utente());
@@ -44,8 +45,10 @@ public class UtenteController {
 //		System.out.println("Utente.getUsername() :" + utente.getUsername());
 //		guard condition 
 		if (Objects.isNull(UtenteAuth)) {
-			throw new Exception("user not register in db ");
-//			return "redirect:/login";
+//		TODO: Mostrare l'eerore nella pagina html 
+			String error = "user not register in db";
+
+			return "redirect:/login";
 		}
 
 		return "redirect:/dashboard";
