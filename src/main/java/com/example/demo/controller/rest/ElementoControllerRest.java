@@ -15,7 +15,7 @@ public class ElementoControllerRest {
 	@Autowired
 	private ServiceElemento serviceElemento;
 
-	@RequestMapping(value = "dashboardElementi", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/dashboardElementi", method = RequestMethod.GET)
 
 	public List ElementiJson() {
 
