@@ -19,6 +19,10 @@ public class ElementoControllerRest {
 
 	public List ElementiJson() {
 
+//		System.out.println("toString : " + serviceElemento.ElementiJson().toString());
+//		String data = "data : ";
+//		data = data + serviceElemento.ElementiJson().toString();
+//		data = data.replaceAll("\\s+", "");
 		return serviceElemento.ElementiJson();
 
 	}

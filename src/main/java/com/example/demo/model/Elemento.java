@@ -41,12 +41,12 @@ public class Elemento {
 		this.nome = nome;
 	}
 
-	public String getCodiceIpt() {
+	public String getSerialeprodotto() {
 		return serialeprodotto;
 	}
 
-	public void setCodiceIpt(String codiceIpt) {
-		this.serialeprodotto = codiceIpt;
+	public void setSerialeprodotto(String serialeprodotto) {
+		this.serialeprodotto = serialeprodotto;
 	}
 
 	public int getQuantita() {
@@ -56,4 +56,11 @@ public class Elemento {
 	public void setQuantita(int quantita) {
 		this.quantita = quantita;
 	}
+
+//	@Override
+//	public String toString() {
+//		return "{ \"id\":" + this.id + "," + "\"nome\":\"" + this.nome + "\"," + "\"quantita\":" + this.quantita + ","
+//				+ "\"serialeprodotto\":\"" + this.serialeprodotto + "\"}";
+//
+//	}
 }

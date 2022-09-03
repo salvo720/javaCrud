@@ -7,25 +7,29 @@ $(function () {
 });
 
 function takeDataFropApi() {
-    $.ajax({
-        url: "/api/dashboardElementi",
-        data: '',
-        dataType: 'json',
-        method: 'GET',
-    }).done(function (data) {
-        console.log(data)
-    }).fail(function () {
-        console.error("request error")
-    });
+    // $.ajax({
+    //     url: "/api/dashboardElementi",
+    //     data: '',
+    //     dataType: 'json',
+    //     method: 'GET',
+    // }).done(function (data) {
+    //     console.log(data)
+    // }).fail(function () {
+    //     console.log("request error");
+    // });
 
     $('#tableElementi').DataTable({
-        ajax: '/api/dashboardElementi',
-        // dataSrc: 
+        ajax:
+        {
+            url: "/api/dashboardElementi",
+            dataSrc: '',
+        },
         columns: [
-            { data: id },
-            { data: nome },
-            { data: codiceSeriale },
-            { data: quantita },
+            { data: 'id' },
+            { data: 'nome' },
+            { data: 'serialeprodotto' },
+            { data: 'quantita' },
+
         ],
     });
 }
