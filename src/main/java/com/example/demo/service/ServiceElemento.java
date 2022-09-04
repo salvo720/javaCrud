@@ -18,4 +18,8 @@ public class ServiceElemento {
 		return elementiJson;
 	}
 
+	public void NewElement(Iterable saveElemento) {
+		elementoRepository.saveAll(saveElemento);
+	}
+
 }

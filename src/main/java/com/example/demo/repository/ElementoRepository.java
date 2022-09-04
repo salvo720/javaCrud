@@ -10,4 +10,6 @@ import com.example.demo.model.Elemento;
 @Repository
 public interface ElementoRepository extends JpaRepository<Elemento, Integer> {
 	public List findAll();
+
+	public List saveAll(Iterable saveElemento);
 }

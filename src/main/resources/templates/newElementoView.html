@@ -32,10 +32,7 @@
 	<!-- mio script -->
 	<script defer th:src="@{js/scriptLogin.js}"></script>
 
-
-	<h1>dashboard</h1>
 	<!-- - navbar login  -->
-
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<div class="navbar-brand">Navbar</div>
@@ -52,11 +49,11 @@
 							Elementi
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="">Tabella Elementi</a></li>
-							<li><a class="dropdown-item" href="">Nuovo Elemento</a></li>
+							<li><a class="dropdown-item" th:href="@{/elementiView}">Tabella Elementi</a></li>
+							<li><a class="dropdown-item" href="/">Nuovo Elemento</a></li>
 						</ul>
 					</li>
-					<li class="nav-item dropdown">
+					<!-- <li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
 							Produttori
@@ -65,10 +62,10 @@
 							<li><a class="dropdown-item" href="">Tabella Produttori</a></li>
 							<li><a class="dropdown-item" href="">Nuovo Produttore</a></li>
 						</ul>
-					</li>
-					<li class="nav-item">
+					</li> -->
+					<!-- <li class="nav-item">
 						<a class="nav-link active" aria-current="page" href="">Welcome controller </a>
-					</li>
+					</li> -->
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,12 +73,7 @@
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<!-- List API or endpoint  -->
-							<li><a class="dropdown-item" href="">elementi api</a></li>
-							<li><a class="dropdown-item" href="">elementi API dati</a></li>
-							<li><a class="dropdown-item" href="">produttori api</a></li>
-							<li><a class="dropdown-item" href="">produttori API dati </a></li>
-
-
+							<li><a class="dropdown-item" href="/api/elementiJson">elementi api</a></li>
 							<!-- <li><a class="dropdown-item" href="<?php echo site_url('Produttori_Crud_Controller/new_productor') ?>">Nuovo Produttore</a></li> -->
 						</ul>
 					</li>
@@ -104,17 +96,39 @@
 		</div>
 	</nav>
 
-	<table id="tableElementi">
-		<thead>
-			<tr>
-				<td>Id</td>
-				<td>Nome</td>
-				<td>CodiceSeriale</td>
-				<td>Quantita</td>
-			</tr>
-		</thead>
-		<tbody></tbody>
-	</table>
+	<br>
+
+	<!-- alert box  -->
+	<div class="alert alert-success d-flex align-items-center" role="alert">
+		<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+			<use xlink:href="#check-circle-fill" />
+		</svg>
+		<div>
+			<span th:text="${successNewElement ? successNewElement: '';}"></span>
+		</div>
+	</div>
+
+
+
+	<!-- - form login  -->
+	<form th:action="@{/newElemento}" modelAttribute="Elemento" th:object="${Elemento}" method="POST">
+		<div class="mb-3">
+			<label for="nomeProdotto" class="form-label"> Nome Prodotto </label>
+			<input name="nomeProdotto" type="text" id="idNomeProdotto" class="form-control" th:field="*{nome}"
+				th:value="*{nome}" required>
+		</div>
+		<div class="mb-3">
+			<label for="idQuantita" class="form-label"> Quantita </label>
+			<input name="quantita" id="idQuantita" type="number" class="form-control" th:field="*{quantita}"
+				th:value="*{quantita}" required>
+		</div>
+		<div class="mb-3">
+			<label for="idSerialeprodotto" class="form-label"> Seriale Prodotto </label>
+			<input name="serialeprodotto" id="idSerialeprodotto" type="text" class="form-control"
+				th:field="*{serialeprodotto}" th:value="*{serialeprodotto}" required>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
 
 
 </body>

@@ -7,6 +7,7 @@ $(function () {
 });
 
 function takeDataFropApi() {
+    // test api work 
     // $.ajax({
     //     url: "/api/dashboardElementi",
     //     data: '',
@@ -19,9 +20,12 @@ function takeDataFropApi() {
     // });
 
     $('#tableElementi').DataTable({
+        paging: true,
+        search: true,
+        pageLength: 50,
         ajax:
         {
-            url: "/api/dashboardElementi",
+            url: "/api/elementiJson",
             dataSrc: '',
         },
         columns: [
@@ -29,7 +33,18 @@ function takeDataFropApi() {
             { data: 'nome' },
             { data: 'serialeprodotto' },
             { data: 'quantita' },
-
+            {
+                render: function (data, type, row) {
+                    return `<button type = "button" class="button btn btn-warning" id = "buttonNewElemento"
+                th: href = "@{/updateElemento?id={` + row.id + `}}" ><i class="fa-sharp fa-solid fa-pen-to-square fa-xl"></i></button >`
+                }
+            },
+            {
+                render: function (data, type, row) {
+                    return `<button type = "button" class="button btn btn-danger" id = "buttonNewElemento"
+                th:href = "@{/deleteElemento?id={` + row.id + `}}" > <i class="fa fa-trash fa-xl"></i></button >`
+                },
+            }
         ],
     });
 }

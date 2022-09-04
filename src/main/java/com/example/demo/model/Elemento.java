@@ -57,6 +57,23 @@ public class Elemento {
 		this.quantita = quantita;
 	}
 
+	public Elemento() {
+
+	}
+
+	public Elemento(String nome, String serialeprodotto, int quantita) {
+		this.nome = nome;
+		this.serialeprodotto = serialeprodotto;
+		this.quantita = quantita;
+	}
+
+	public Elemento(int id, String nome, String serialeprodotto, int quantita) {
+		this.id = id;
+		this.nome = nome;
+		this.serialeprodotto = serialeprodotto;
+		this.quantita = quantita;
+	}
+
 //	@Override
 //	public String toString() {
 //		return "{ \"id\":" + this.id + "," + "\"nome\":\"" + this.nome + "\"," + "\"quantita\":" + this.quantita + ","
