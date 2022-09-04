@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.model.Elemento;
 import com.example.demo.service.ServiceElemento;
@@ -31,16 +30,18 @@ public class ElementoController {
 	}
 
 	@RequestMapping(value = "/newElemento", method = RequestMethod.POST)
-	@ResponseBody
+//	@ResponseBody
 //	response body indica che non torneremo una pagina di view del tempklate engine  ma un stringa 
-	public String newElemento(@ModelAttribute("Elemento") Elemento elemento) {
+	public String newElemento(@ModelAttribute("Elemento") Elemento elemento, Model model) {
 
 		System.out.println("elemento : " + elemento);
 		ArrayList<Elemento> saveElemento = new ArrayList<Elemento>();
 		saveElemento.add(0, new Elemento(elemento.getNome(), elemento.getSerialeprodotto(), elemento.getQuantita()));
 		serviceElemento.NewElement(saveElemento);
 		String successNewElemento = "Elemento inserito correttamente";
-		return successNewElemento;
+		model.addAttribute("successMessage", successNewElemento);
+//		i dati si passano attraverso il model attribute 
+		return "newElementoView";
 	}
 
 	@RequestMapping(value = "/updateElemento", method = RequestMethod.GET)
