@@ -4,6 +4,7 @@
 $(function () {
     console.log("ready!");
     takeDataFropApi();
+    DatatableElementi();
 });
 
 function takeDataFropApi() {
@@ -18,11 +19,13 @@ function takeDataFropApi() {
     // }).fail(function () {
     //     console.log("request error");
     // });
+}
 
+function DatatableElementi() {
     $('#tableElementi').DataTable({
         paging: true,
         search: true,
-        pageLength: 50,
+        pageLength: 10,
         ajax:
         {
             url: "/api/elementiJson",
@@ -35,14 +38,14 @@ function takeDataFropApi() {
             { data: 'quantita' },
             {
                 render: function (data, type, row) {
-                    return `<button type = "button" class="button btn btn-warning" id = "buttonNewElemento"
-                th: href = "@{/updateElemento?id={` + row.id + `}}" ><i class="fa-sharp fa-solid fa-pen-to-square fa-xl"></i></button >`
+                    return `<a type = "button" class="button btn btn-warning" id = "buttonNewElemento"
+                    onclick = window.location.href="/updateElementoView/` + row.id + `" ><i class="fa-sharp fa-solid fa-pen-to-square fa-xl"></i></a>`
                 }
             },
             {
                 render: function (data, type, row) {
                     return `<button type = "button" class="button btn btn-danger" id = "buttonNewElemento"
-                th:href = "@{/deleteElemento?id={` + row.id + `}}" > <i class="fa fa-trash fa-xl"></i></button >`
+                    onclick = window.location.href="/deleteElemento/` + row.id + `" > <i class="fa fa-trash fa-xl"></i></button>`
                 },
             }
         ],

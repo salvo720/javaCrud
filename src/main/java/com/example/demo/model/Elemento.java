@@ -61,6 +61,17 @@ public class Elemento {
 
 	}
 
+	public Elemento(Elemento elemento) {
+		this.id = elemento.getId();
+		this.nome = elemento.getNome();
+		this.serialeprodotto = elemento.getSerialeprodotto();
+		this.quantita = elemento.getQuantita();
+	}
+
+	public Elemento(int id) {
+		this.id = id;
+	}
+
 	public Elemento(String nome, String serialeprodotto, int quantita) {
 		this.nome = nome;
 		this.serialeprodotto = serialeprodotto;

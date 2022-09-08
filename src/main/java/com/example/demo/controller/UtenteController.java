@@ -51,7 +51,7 @@ public class UtenteController {
 			return "redirect:/login";
 		}
 
-		return "redirect:/dashboard";
+		return "redirect:/elementiView";
 
 	}
 

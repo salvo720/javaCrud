@@ -12,4 +12,7 @@ public interface ElementoRepository extends JpaRepository<Elemento, Integer> {
 	public List findAll();
 
 	public List saveAll(Iterable saveElemento);
+
+//	public List<Elemento> update(Elemento elemento);
+
 }

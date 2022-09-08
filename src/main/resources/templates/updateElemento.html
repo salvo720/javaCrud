@@ -116,10 +116,14 @@
 
 
 	<!-- - form login  -->
-	<form th:action="@{/newElemento}" modelAttribute="Elemento" th:object="${Elemento}" method="POST">
+	<form th:action="@{/updateElemento}" modelAttribute="Elemento" th:object="${Elemento}" method="POST">
+		<div class="mb-3">
+<!-- - 		<label for="nomeProdotto" class="form-label"> Id </label>  -->	
+			<input name="id" type="hidden" id="idId" class="form-control" th:field="*{Id}" th:value="*{Id}" required>
+		</div>
 		<div class="mb-3">
 			<label for="nomeProdotto" class="form-label"> Nome Prodotto </label>
-			<input name="nomeProdotto" type="text" id="idNomeProdotto" class="form-control" th:field="*{nome}"
+			<input name="nomeProdotto" type="text" id="idNomeProdotto" class="form-control" th:field="${Elemento.nome}"
 				th:value="*{nome}" required>
 		</div>
 		<div class="mb-3">
