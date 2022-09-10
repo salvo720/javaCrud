@@ -7,7 +7,7 @@
 	<!--  datatable -->
 	<link rel="stylesheet" th:href="@{https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
 	<!-- mio css -->
-	<link rel="stylesheet" th:href="@{css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 	<!-- font awesome cdn  -->
 	<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css}">
 
@@ -32,7 +32,7 @@
 	<script defer th:src="@{https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js}"></script>
 
 	<!-- mio script -->
-	<script defer th:src="@{js/scriptNewElemento.js}"></script>
+	<script defer th:src="@{/js/scriptNewElemento.js}"></script>
 
 	<!-- - navbar login  -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -119,7 +119,7 @@
 	<form th:action="@{/updateElemento}" modelAttribute="Elemento" th:object="${Elemento}" method="POST">
 		<div class="mb-3">
 <!-- - 		<label for="nomeProdotto" class="form-label"> Id </label>  -->	
-			<input name="id" type="hidden" id="idId" class="form-control" th:field="*{Id}" th:value="*{Id}" required>
+			<input name="id" type="hidden" id="idId" class="form-control" th:field="*{id}" th:value="*{id}" required>
 		</div>
 		<div class="mb-3">
 			<label for="nomeProdotto" class="form-label"> Nome Prodotto </label>
@@ -127,15 +127,16 @@
 				th:value="*{nome}" required>
 		</div>
 		<div class="mb-3">
-			<label for="idQuantita" class="form-label"> Quantita </label>
-			<input name="quantita" id="idQuantita" type="number" class="form-control" th:field="*{quantita}"
-				th:value="*{quantita}" required>
-		</div>
-		<div class="mb-3">
 			<label for="idSerialeprodotto" class="form-label"> Seriale Prodotto </label>
 			<input name="serialeprodotto" id="idSerialeprodotto" type="text" class="form-control"
 				th:field="*{serialeprodotto}" th:value="*{serialeprodotto}" required>
 		</div>
+		<div class="mb-3">
+			<label for="idQuantita" class="form-label"> Quantita </label>
+			<input name="quantita" id="idQuantita" type="number" class="form-control" th:field="*{quantita}"
+				th:value="*{quantita}" required>
+		</div>
+		
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 

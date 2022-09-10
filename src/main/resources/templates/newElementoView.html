@@ -2,19 +2,19 @@
 <html lang="en">
 
 <head>
-	<!-- bootstrap 5 -->
-	<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}">
-	<!--  datatable -->
-	<link rel="stylesheet" th:href="@{https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
-	<!-- mio css -->
-	<link rel="stylesheet" th:href="@{css/style.css}">
-	<!-- font awesome cdn  -->
-	<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css}">
+<!-- bootstrap 5 -->
+<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}">
+<!--  datatable -->
+<link rel="stylesheet" th:href="@{https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+<!-- mio css -->
+<link rel="stylesheet" th:href="@{css/style.css}">
+<!-- font awesome cdn  -->
+<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css}">
 
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title> Dashboard </title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
 </head>
 
 <body>
@@ -38,23 +38,18 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<div class="navbar-brand">Navbar</div>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							Elementi
-						</a>
+					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false"> Elementi </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" th:href="@{/elementiView}">Tabella Elementi</a></li>
 							<li><a class="dropdown-item" href="/">Nuovo Elemento</a></li>
-						</ul>
-					</li>
+					</ul></li>
 					<!-- <li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
@@ -68,17 +63,13 @@
 					<!-- <li class="nav-item">
 						<a class="nav-link active" aria-current="page" href="">Welcome controller </a>
 					</li> -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							API | end-point
-						</a>
+					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false"> API | end-point </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<!-- List API or endpoint  -->
 							<li><a class="dropdown-item" href="/api/elementiJson">elementi api</a></li>
 							<!-- <li><a class="dropdown-item" href="<?php echo site_url('Produttori_Crud_Controller/new_productor') ?>">Nuovo Produttore</a></li> -->
-						</ul>
-					</li>
+					</ul></li>
 					<!-- <li class="nav-item">
 		          <a class="nav-link" href="#">Link</a>
 		        </li>
@@ -102,13 +93,11 @@
 
 	<!-- alert box  -->
 
-	<div th:if="${ successMessage != null && !successMessage.isEmpty() }" id="idAlertBox" class="alert alert-success"
-		data-bs-dismiss="alert" role="alert">
+	<div th:if="${ successMessage != null && !successMessage.isEmpty() }" id="idAlertBox" class="alert alert-success" data-bs-dismiss="alert" role="alert">
 		<span th:text="${successMessage }"></span>
 	</div>
-	
-	<div th:if="${ errorMessage != null && !errorMessage.isEmpty() }" id="idAlertBox" class="alert alert-success"
-		data-bs-dismiss="alert" role="alert">
+
+	<div th:if="${ errorMessage != null && !errorMessage.isEmpty() }" id="idAlertBox" class="alert alert-success" data-bs-dismiss="alert" role="alert">
 		<span th:text="${successMessage }"></span>
 	</div>
 
@@ -118,20 +107,18 @@
 	<!-- - form login  -->
 	<form th:action="@{/newElemento}" modelAttribute="Elemento" th:object="${Elemento}" method="POST">
 		<div class="mb-3">
-			<label for="nomeProdotto" class="form-label"> Nome Prodotto </label>
-			<input name="nomeProdotto" type="text" id="idNomeProdotto" class="form-control" th:field="*{nome}"
-				th:value="*{nome}" required>
+			<label for="nomeProdotto" class="form-label"> Nome Prodotto </label> <input name="nomeProdotto" type="text" id="idNomeProdotto" class="form-control"
+				th:field="*{nome}" th:value="*{nome}" required>
 		</div>
 		<div class="mb-3">
-			<label for="idQuantita" class="form-label"> Quantita </label>
-			<input name="quantita" id="idQuantita" type="number" class="form-control" th:field="*{quantita}"
-				th:value="*{quantita}" required>
+			<label for="idSerialeprodotto" class="form-label"> Seriale Prodotto </label> <input name="serialeprodotto" id="idSerialeprodotto" type="text"
+				class="form-control" th:field="*{serialeprodotto}" th:value="*{serialeprodotto}" required>
 		</div>
 		<div class="mb-3">
-			<label for="idSerialeprodotto" class="form-label"> Seriale Prodotto </label>
-			<input name="serialeprodotto" id="idSerialeprodotto" type="text" class="form-control"
-				th:field="*{serialeprodotto}" th:value="*{serialeprodotto}" required>
+			<label for="idQuantita" class="form-label"> Quantita </label> <input name="quantita" id="idQuantita" type="number" class="form-control"
+				th:field="*{quantita}" th:value="*{quantita}" required>
 		</div>
+		
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 

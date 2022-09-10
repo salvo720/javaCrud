@@ -45,8 +45,8 @@ public class Elemento {
 		return serialeprodotto;
 	}
 
-	public void setSerialeprodotto(String serialeprodotto) {
-		this.serialeprodotto = serialeprodotto;
+	public void setSerialeprodotto(String serialeProdotto) {
+		this.serialeprodotto = serialeProdotto;
 	}
 
 	public int getQuantita() {

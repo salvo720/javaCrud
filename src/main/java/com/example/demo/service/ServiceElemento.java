@@ -20,23 +20,23 @@ public class ServiceElemento {
 		return elementiJson;
 	}
 
-	public void NewElement(Iterable<Elemento> saveElemento) {
-		elementoRepository.saveAll(saveElemento);
+	public void NewElement(Iterable<Elemento> elementoSave) {
+		elementoRepository.saveAll(elementoSave);
 	}
 
-	public void UpdateElemento(Elemento elemento) throws Exception {
-//		Optional<Elemento> elementFound = elementoRepository.findById(elemento.getId());
-//
-//		if (elementFound.isEmpty()) {
-//			throw new Exception("Errore elemento non trovato ");
-//		}
+	public void UpdateElemento(Elemento elementoUpdate) throws Exception {
+//		elementoRepository.save(elementoUpdate);
+		Optional<Elemento> Elemento = elementoRepository.findById(elementoUpdate.getId());
+		if (Elemento.isEmpty()) {
+			throw new Exception("Errore elemento non trovato");
+		}
 
-		Optional<Elemento> elementFound = findById(elemento.getId());
+		Elemento Elementodb = Elemento.get();
 
-		elementFound.get().setId(elemento.getId());
-		elementFound.get().setNome(elemento.getNome());
-		elementFound.get().setQuantita(elemento.getQuantita());
-		elementFound.get().setSerialeprodotto(elemento.getSerialeprodotto());
+		Elementodb.setNome(elementoUpdate.getNome());
+		Elementodb.setSerialeprodotto(elementoUpdate.getSerialeprodotto());
+		Elementodb.setQuantita(elementoUpdate.getQuantita());
+		elementoRepository.save(Elementodb);
 	}
 
 	public Optional<Elemento> findById(int id) throws Exception {

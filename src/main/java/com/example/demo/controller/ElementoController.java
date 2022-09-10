@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,9 +58,17 @@ public class ElementoController {
 	}
 
 	@RequestMapping(value = "/updateElemento", method = RequestMethod.POST)
-	public String updateElemento(@PathVariable(value = "Elemento") Elemento elemento) throws Exception {
-		serviceElemento.UpdateElemento(elemento);
-		return "updateElemento";
+
+	public String updateElemento(HttpServletRequest request, Model model) throws Exception {
+		int id = Integer.parseInt(request.getParameter("id"));
+		String nome = request.getParameter("nome");
+		String serialeProdotto = request.getParameter("serialeprodotto");
+		int quantita = Integer.parseInt(request.getParameter("quantita"));
+		Elemento elementoupdate = new Elemento(id, nome, serialeProdotto, quantita);
+
+		serviceElemento.UpdateElemento(elementoupdate);
+
+		return "redirect:/elementiView";
 	}
 
 	@RequestMapping(value = "/deleteElemento/{id}", method = RequestMethod.GET)
