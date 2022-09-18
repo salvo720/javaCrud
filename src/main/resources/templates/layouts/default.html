@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header"> Header </head>
+<body th:value="${view}">
+	<nav th:replace="fragments/navbar :: navbar"> Navbar </nav>
+	
+	<br><br>
+	
+	<div th:replace="${view} :: content">Content</div>
+	
+	<footer th:replace="fragments/footer :: footer"> Footer </footer>
+</body>
+</html>
+	
+	
+
+	
+	

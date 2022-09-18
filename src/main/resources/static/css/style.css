@@ -1,3 +1,7 @@
 input {
 	color:blue !important;
 }
+
+div{
+	background-color:red;
+}

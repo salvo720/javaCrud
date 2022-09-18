@@ -61,4 +61,10 @@ public class Utente {
 		this.password = password;
 	}
 
+	public Utente(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+
 }

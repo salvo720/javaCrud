@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import java.util.Objects;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,20 +27,22 @@ public class UtenteController {
 //	/ e login portano allo stesso link  
 //	per poter prendere i dati del login dobbiamo creare un oggetto con i dati del for che mandiamo 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model model) {
-		model.addAttribute("utente", new Utente());
-		return "utente";
+	public String login(HttpServletRequest request, Model model) {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		model.addAttribute("utente", new Utente(username, password));
+		return "login";
 	}
 
 //	/ e login coincidono 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String undefinePage() {
-		return "login";
+		return "redirect:login";
 
 	}
 
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
-	public String loginCheck(@ModelAttribute("utente") Utente utente) throws Exception {
+	public String loginCheck(@ModelAttribute("utente") Utente utente, Model model) throws Exception {
 
 		Utente UtenteAuth = serviceUtente.loginAuth(utente.getUsername(), utente.getPassword());
 //		System.out.println("UtenteAuth :" + UtenteAuth);
@@ -46,8 +50,8 @@ public class UtenteController {
 //		guard condition 
 		if (Objects.isNull(UtenteAuth)) {
 //		TODO: Mostrare l'eerore nella pagina html 
-			String error = "user not register in db";
-
+			String errorMessage = "user not register in db";
+			model.addAttribute("errorMessage", errorMessage);
 			return "redirect:/login";
 		}
 

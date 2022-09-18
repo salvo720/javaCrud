@@ -19,17 +19,32 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(final HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-//	@formatter:off
-	.antMatchers("/elementiView").hasRole("USER")
-	.antMatchers("/").permitAll()
-	// equivalent to <http auto-config="true">
-	.and().formLogin()
-	.and().httpBasic()
-	.and().logout()
-	// CSRF is enabled by default (will discuss later)
-	.and().csrf().disable();
+//		@formatter:off
+			.antMatchers("/elementiView").hasRole("USER")
+			.antMatchers("/*").permitAll()
+				// equivalent to <http auto-config="true">
+//			config login 
+			.and().formLogin()
+				.loginPage("/login")
+				.loginProcessingUrl("/loginCheck")
+				.failureUrl("/login")
+				.usernameParameter("username")
+				.passwordParameter("password")
+//			config loguot
+			.and().logout()
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/login?logout")
+			
+			.and().httpBasic()
+			.and().logout()
+			// CSRF is enabled by default (will discuss later)
+			.and().csrf().disable();
+		
+//		@formatter:on
 	}
-//	@formatter:on
+
+//	example security with securityfilterchain need deepening 
+	//	@formatter:on
 
 //	@Bean
 //	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
