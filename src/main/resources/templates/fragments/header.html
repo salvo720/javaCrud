@@ -1,18 +1,27 @@
 <head th:fragment="header">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Tabella elementi </title>
 	<!-- bootstrap 5 -->
 	<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}" />
 	<!--  datatable -->
 	<link rel="stylesheet" th:href="@{https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}" />
 	<!-- mio css -->
-	<link rel="stylesheet" th:href="@{/css/style.css}" >
+	<!-- -  <link rel="stylesheet" th:href="@{/css/style.css}" > 
 	<!-- font awesome cdn  -->
 	<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css}" />
 
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title> Tabella elementi </title>
 	
+	<style>
+	input {
+		color:blue ;
+	}
+
+	div{
+		background-color: unset;
+	}
+	</style>
 </head>
 	<nav th:replace="fragments/navbar :: navbar"> Navbar </nav>
 
