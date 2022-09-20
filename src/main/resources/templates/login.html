@@ -1,13 +1,15 @@
 		<!-- - fragment -->
 	<div th:fragment="content">
 	
+	<!-- - error or success message box  -->
+	
 	<div th:if="${ errorMessage != null && !errorMessage.isEmpty() }" id="idAlertBox" class="alert alert-success"
 		data-bs-dismiss="alert" role="alert">
 		<span th:text="${successMessage }"></span>
 	</div>
-
-	<!-- - form login  -->
-
+	
+	<!-- - error from spring security  -->
+	
 	<div th:if="${param.error != null}" class="alert alert-danger">
 		<strong>Failed to login.</strong>
 		<span th:if="${session[SPRING_SECURITY_LAST_EXCEPTION]!= null}">
@@ -15,6 +17,8 @@
 		</span>
 	</div>
 	<div th:if="${param.logout != null}" class="alert alert-success">You have been logged out.</div>
+
+	<!-- - form login  -->
 
 	<form action="/loginCheck" method="POST" class="form-actions" cssClass="form-horizontal">
 		<div class="mb-3">
@@ -27,5 +31,3 @@
 		</div>
 		<button type="submit" id="idSubmit" name="submit" class="btn btn-primary">Submit</button>
 	</form>
-	<!-- - footer -->
-	<div th:replace="fragments/footer :: footer"> </div>

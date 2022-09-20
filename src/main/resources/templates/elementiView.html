@@ -2,7 +2,7 @@
 	<div th:fragment="content">
 	
 		<!-- mio script -->
-	<script defer th:src="@{/js/scriptTabellaElementi.js}"></script>
+	<script defer th:replace="assets/js/scriptTabellaElementi :: script"></script>
 	
 		<div th:if="${ successMessage != null && !successMessage.isEmpty() }" id="idAlertBox" class="alert alert-success"
 		data-bs-dismiss="alert" role="alert">
@@ -37,5 +37,3 @@
 		</thead>
 		<tbody></tbody>
 	</table>
-
-			<div th:replace="fragments/footer :: footer"> </div>

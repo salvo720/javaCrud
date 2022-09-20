@@ -1,13 +1,8 @@
 		<!-- - fragment -->
 	<div th:fragment="content">
 
-		<!-- - header -->
-	<div th:replace="fragments/header :: header"> </div>
-		<!-- - navbar -->
-	<div th:replace="fragments/navbar :: navbar"> </div>
-
 	<!-- mio script -->
-	<script defer th:src="@{js/scriptNewElemento.js}"></script>
+	<script defer th:replace="assets/js/scriptNewElemento :: script"></script>
 
 	<br>
 
@@ -40,6 +35,3 @@
 		
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
-
-	<!-- - footer -->
-	<div th:replace="fragments/footer :: footer"> </div>

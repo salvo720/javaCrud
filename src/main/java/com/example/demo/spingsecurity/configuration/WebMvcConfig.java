@@ -1,7 +1,6 @@
 package com.example.demo.spingsecurity.configuration;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -14,13 +13,15 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 		registry.addViewController("/login/form").setViewName("login");
 	}
 
+//	function for intercept view 
 	@Override
 	protected void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new ThymeleafLayoutInterceptor());
 	}
 
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**");
-	}
+//	function not work for ingore request in static folder
+//	public void configure(WebSecurity web) throws Exception {
+//		web.ignoring().antMatchers("/resources/**");
+//	}
 
 }
