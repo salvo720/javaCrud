@@ -20,6 +20,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 //		@formatter:off
+//		da provare riga sotto 	
+			.antMatchers("/**/*.js", "/**/*.css").permitAll()
 			.antMatchers("/elementiView").hasRole("USER")
 			.antMatchers("/*").permitAll()
 				// equivalent to <http auto-config="true">

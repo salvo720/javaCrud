@@ -8,7 +8,6 @@
 		<span th:text="${errorMessage }"></span>
 	</div>
 	
-	
 	<!-- - error from spring security  -->
 	
 	<div th:if="${param.error != null}" class="alert alert-danger">
@@ -21,14 +20,14 @@
 
 	<!-- - form login  -->
 
-	<form action="/loginCheck" method="POST" class="form-actions" cssClass="form-horizontal">
+	<form th:action="@{/login2Check}" method="POST"  modelAttribute="Utente" th:object="${utente}"  >
 		<div class="mb-3">
 			<label for="idUsername" class="form-label"> Username </label>
-			<input name="username" type="email" id="idUsername" class="form-control" aria-describedby="username">
+			<input name="username" type="email" id="idUsername" class="form-control" aria-describedby="username" th:filed=*{username} th:value=*{username}>
 		</div>
 		<div class="mb-3">
 			<label for="idPassword" class="form-label">Password</label>
-			<input name="password" id="idPassword" type="password" class="form-control">
+			<input name="password" id="idPassword" type="password" class="form-control" th:filed=*{password} th:value=*{password}>
 		</div>
 		<button type="submit" id="idSubmit" name="submit" class="btn btn-primary">Submit</button>
 	</form>
