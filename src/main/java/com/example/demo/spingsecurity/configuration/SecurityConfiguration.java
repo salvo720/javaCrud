@@ -12,7 +12,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(final AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user@gmail.com").password("{noop}user").roles("USER");
+		auth.inMemoryAuthentication().withUser("user@gmail.com").password("{noop}user").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("asd@gmail.com").password("{noop}asd").roles("USER" , "ADMIN");
 	}
 
 	@Override
@@ -21,9 +22,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 //		@formatter:off
 //		da provare riga sotto 	
-			.antMatchers("/**/*.js", "/**/*.css").permitAll()
-			.antMatchers("/elementiView").hasRole("USER")
-			.antMatchers("/*").permitAll()
+			.antMatchers("/").access("hasAnyRole('ANONYMOUS', 'USER')")
+			.antMatchers("/login*").access("hasAnyRole('ANONYMOUS', 'USER')")
+			.antMatchers("/login/*").access("hasAnyRole('ANONYMOUS', 'USER')")
+			.antMatchers("/logout/*").access("hasAnyRole('ANONYMOUS', 'USER')")
+//			.antMatchers("/admin/*").access("hasRole('ADMIN')")
+			.antMatchers("/elementiView").hasRole("ADMIN")
+			.antMatchers("/resources**").access("hasAnyRole('ANONYMOUS')")
+			.antMatchers("/**/*.js", "/**/*.css").access("hasAnyRole('ANONYMOUS')")
+			.antMatchers("/**").access("hasRole('USER')")
+//			.antMatchers("/*").permitAll()
 				// equivalent to <http auto-config="true">
 //			config login 
 			.and().formLogin()

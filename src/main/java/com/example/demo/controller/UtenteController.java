@@ -30,9 +30,9 @@ public class UtenteController {
 //	per poter prendere i dati del login dobbiamo creare un oggetto con i dati del for che mandiamo 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, Model model) {
-		String username = request.getParameter("username");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		model.addAttribute("utente", new Utente(username, password));
+		model.addAttribute("utente", new Utente(email, password));
 		return "login";
 	}
 
@@ -46,7 +46,7 @@ public class UtenteController {
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
 	public String loginCheck(@ModelAttribute("utente") Utente utente, Model model) throws Exception {
 
-		Utente UtenteAuth = serviceUtente.loginAuth(utente.getUsername(), utente.getPassword());
+		Utente UtenteAuth = serviceUtente.loginAuth(utente.getEmail(), utente.getPassword());
 //		System.out.println("UtenteAuth :" + UtenteAuth);
 //		System.out.println("Utente.getUsername() :" + utente.getUsername());
 //		guard condition 
@@ -63,9 +63,9 @@ public class UtenteController {
 
 	@RequestMapping(value = "login2", method = RequestMethod.GET)
 	public String login2(HttpServletRequest request, Model model) {
-		String username = request.getParameter("username");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		model.addAttribute("utente", new Utente(username, password));
+		model.addAttribute("utente", new Utente(email, password));
 		return "login2";
 
 	}
@@ -73,10 +73,10 @@ public class UtenteController {
 	@RequestMapping(value = "login2Check", method = RequestMethod.POST)
 	public String login2Check(@ModelAttribute("utente") Utente utente, Model model) {
 
-		Utente utentedb = serviceUtente.loginAuth(utente.getUsername(), utente.getPassword());
+		Utente utentedb = serviceUtente.loginAuth(utente.getEmail(), utente.getPassword());
 
 		if ( utentedb == null ) {
-			model.addAttribute("errorMessage", "username or password invalid ");
+			model.addAttribute("errorMessage", "email or password invalid ");
 			return "login2";
 		}
 

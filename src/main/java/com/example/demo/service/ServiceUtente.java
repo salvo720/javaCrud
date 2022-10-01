@@ -12,9 +12,9 @@ public class ServiceUtente {
 	@Autowired
 	private UtenteRepository repo;
 
-	public Utente loginAuth(String username, String password) {
+	public Utente loginAuth(String email, String password) {
 
-		Utente UtenteLogin = repo.findByUsernameAndPassword(username, password);
+		Utente UtenteLogin = repo.findByEmailAndPassword(email, password);
 		return UtenteLogin;
 	}
 

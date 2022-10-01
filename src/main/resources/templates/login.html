@@ -3,7 +3,7 @@
 	
 	<!-- - error or success message box  -->
 	
-	<div th:if="${ errorMessage != null && !errorMessage.isEmpty() }" id="idAlertBox" class="alert alert-danger"
+	<div th:if="${ errorMessage != null  }" id="idAlertBox" class="alert alert-danger"
 		data-bs-dismiss="alert" role="alert">
 		<span th:text="${errorMessage }"></span>
 	</div>
@@ -11,20 +11,21 @@
 	
 	<!-- - error from spring security  -->
 	
-	<div th:if="${param.error != null}" class="alert alert-danger">
+	<div th:if="${param.error != null }" class="alert alert-danger">
 		<strong>Failed to login.</strong>
 		<span th:if="${session[SPRING_SECURITY_LAST_EXCEPTION]!= null}">
 			<span th:text="${session[SPRING_SECURITY_LAST_EXCEPTION].message}"> Invalid credentials</span>
 		</span>
 	</div>
+	<!--- message logout   -->
 	<div th:if="${param.logout != null}" class="alert alert-success">You have been logged out.</div>
 
 	<!-- - form login  -->
 
 	<form action="/loginCheck" method="POST" class="form-actions" cssClass="form-horizontal">
 		<div class="mb-3">
-			<label for="idUsername" class="form-label"> Username </label>
-			<input name="username" type="email" id="idUsername" class="form-control" aria-describedby="username">
+			<label for="idEmail" class="form-label"> Email </label>
+			<input name="email" type="email" id="idEmail" class="form-control" aria-describedby="email">
 		</div>
 		<div class="mb-3">
 			<label for="idPassword" class="form-label">Password</label>

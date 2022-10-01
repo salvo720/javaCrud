@@ -12,10 +12,10 @@ public class Utente {
 
 	}
 
-	public Utente(int id, String nickname, String username, String password) {
+	public Utente(int id, String nickname, String email, String password) {
 		this.id = id;
 		this.nickname = nickname;
-		this.username = username;
+		this.email = email;
 		this.password = password;
 	}
 
@@ -24,10 +24,18 @@ public class Utente {
 //	identifica un campo autoincremnet 
 	private int id;
 	private String nickname;
-	private String username;
+	private String email;
 	private String password;
 
 //	getter and setter 
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public int getId() {
 		return id;
@@ -45,13 +53,6 @@ public class Utente {
 		this.nickname = nickname;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
 
 	public String getPassword() {
 		return password;
@@ -61,9 +62,9 @@ public class Utente {
 		this.password = password;
 	}
 
-	public Utente(String username, String password) {
+	public Utente(String email, String password) {
 		super();
-		this.username = username;
+		this.email = email;
 		this.password = password;
 	}
 

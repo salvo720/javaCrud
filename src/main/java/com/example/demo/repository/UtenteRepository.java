@@ -7,6 +7,6 @@ import com.example.demo.model.Utente;
 
 @Repository
 public interface UtenteRepository extends JpaRepository<Utente, Integer> {
-	Utente findByUsernameAndPassword(String username, String password);
+	Utente findByEmailAndPassword(String email, String password);
 
 }

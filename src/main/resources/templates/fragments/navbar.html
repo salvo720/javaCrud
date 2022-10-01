@@ -1,67 +1,77 @@
 <!-- - navbar login  -->
 
-		<!-- - navbar login  -->
-	<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container-fluid">
-			<div class="navbar-brand">Navbar</div>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							Elementi
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" th:href="@{/elementiView}">Tabella Elementi</a></li>
-							<li><a class="dropdown-item" href="/">Nuovo Elemento</a></li>
-						</ul>
-					</li>
-					<!-- <li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							Produttori
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="">Tabella Produttori</a></li>
-							<li><a class="dropdown-item" href="">Nuovo Produttore</a></li>
-						</ul>
-					</li> -->
-					<!-- <li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="">Welcome controller </a>
-					</li> -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							API | end-point
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<!-- List API or endpoint  -->
-							<li><a class="dropdown-item" href="/api/elementiJson">elementi api</a></li>
-							<!-- <li><a class="dropdown-item" href="<?php echo site_url('Produttori_Crud_Controller/new_productor') ?>">Nuovo Produttore</a></li> -->
-						</ul>
-					</li>
-					<!-- <li class="nav-item">
-		          <a class="nav-link" href="#">Link</a>
-		        </li>
-		        <li class="nav-item dropdown">
-		          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		            Dropdown
-		          </a>
-		          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-		            <li><a class="dropdown-item" href="#">Action</a></li>
-		            <li><a class="dropdown-item" href="#">Another action</a></li>
-		            <li><hr class="dropdown-divider"></li>
-		            <li><a class="dropdown-item" href="#">Something else here</a></li>
-		          </ul>
-		        </li> -->
-				</ul>
-			</div>
-		</div>
-	</nav>
+<!-- - navbar login  -->
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-	
+	<div class="container-fluid">
+		<div class="navbar-brand">Navbar</div>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Elementi </a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+						<li><a class="dropdown-item" th:href="@{/elementiView}">Tabella
+								Elementi</a></li>
+						<li><a class="dropdown-item" href="/">Nuovo Elemento</a></li>
+					</ul>
+				</li>
+				<!-- <li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								Produttori
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="">Tabella Produttori</a></li>
+								<li><a class="dropdown-item" href="">Nuovo Produttore</a></li>
+							</ul>
+						</li> -->
+				<!-- <li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="">Welcome controller </a>
+						</li> -->
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false">API | end-point </a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<!-- List API or endpoint  -->
+						<li><a class="dropdown-item" href="/api/elementiJson">elementi api</a></li>
+						<!-- <li><a class="dropdown-item" href="<?php echo site_url('Produttori_Crud_Controller/new_productor') ?>">Nuovo Produttore</a></li> -->
+					</ul>
+				</li>
+				<!-- <li class="nav-item">
+			          <a class="nav-link" href="#">Link</a>
+			        </li>
+			        <li class="nav-item dropdown">
+			          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+			            Dropdown
+			          </a>
+			          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+			            <li><a class="dropdown-item" href="#">Action</a></li>
+			            <li><a class="dropdown-item" href="#">Another action</a></li>
+			            <li><hr class="dropdown-divider"></li>
+			            <li><a class="dropdown-item" href="#">Something else here</a></li>
+			          </ul>
+			        </li> -->
+			</ul>
+			<ul class="nav navbar-nav pull-right" sec:authorize="isAuthenticated()">
+				<li>
+					<p class="navbar-text">Welcome 	<div class="navbar-text" th:text="${#authentication}">User</div> </p>
+<!-- -- not work  <p class="navbar-text">Welcome 	<div class="navbar-text" th:text="${#authentication.name }">User</div> </p>
+				-->	
+				</li>
+				<li><a class="nav-link" id="navLogoutLink" role="button" th:href="@{/logout}"> Logout </a></li>
+				<li>&nbsp;|&nbsp;</li>
+			</ul>
+			<ul class="nav navbar-nav pull-right" sec:authorize=" ! isAuthenticated()">
+				<li><a id="navLoginLink" class="btn btn-default" role="button" th:href="@{/login/form}">Login</a></li>
+				<li>&nbsp;|&nbsp;</li>
+			</ul>
+		
+			
+		</div>
+	</div>
+</nav >
