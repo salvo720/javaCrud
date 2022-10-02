@@ -22,8 +22,8 @@
 
 	<form th:action="@{/login2Check}" method="POST"  modelAttribute="Utente" th:object="${utente}"  >
 		<div class="mb-3">
-			<label for="idUsername" class="form-label"> Username </label>
-			<input name="username" type="email" id="idUsername" class="form-control" aria-describedby="username" th:filed=*{username} th:value=*{username}>
+			<label for="idEmail" class="form-label"> Email </label>
+			<input name="Email" type="email" id="idEmail" class="form-control" aria-describedby="Email" th:filed=*{email} th:value=*{email}>
 		</div>
 		<div class="mb-3">
 			<label for="idPassword" class="form-label">Password</label>

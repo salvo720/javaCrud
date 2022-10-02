@@ -23,14 +23,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //		@formatter:off
 //		da provare riga sotto 	
 			.antMatchers("/").access("hasAnyRole('ANONYMOUS', 'USER')")
-			.antMatchers("/login*").access("hasAnyRole('ANONYMOUS', 'USER')")
-			.antMatchers("/login/*").access("hasAnyRole('ANONYMOUS', 'USER')")
-			.antMatchers("/logout/*").access("hasAnyRole('ANONYMOUS', 'USER')")
-//			.antMatchers("/admin/*").access("hasRole('ADMIN')")
-			.antMatchers("/elementiView").hasRole("ADMIN")
-			.antMatchers("/resources**").access("hasAnyRole('ANONYMOUS')")
-			.antMatchers("/**/*.js", "/**/*.css").access("hasAnyRole('ANONYMOUS')")
-			.antMatchers("/**").access("hasRole('USER')")
+//			.antMatchers("/login*").access("hasAnyRole('ANONYMOUS', 'USER')")
+//			.antMatchers("/ciao*").access("hasAnyRole('ANONYMOUS', 'USER')")
+//			.antMatchers("/logout/*").access("hasAnyRole('ANONYMOUS', 'USER')")
+//			.antMatchers("/elementiView").access("hasAnyRole('ADMIN')")
+//			.antMatchers("/resources*").access("hasAnyRole('ANONYMOUS')")
+//			.antMatchers("/**/*.js", "/**/*.css").access("hasAnyRole('ANONYMOUS')")
+//			.antMatchers("/*").access("hasRole('USER')")
 //			.antMatchers("/*").permitAll()
 				// equivalent to <http auto-config="true">
 //			config login 
@@ -40,13 +39,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.failureUrl("/login")
 				.usernameParameter("username")
 				.passwordParameter("password")
+				.defaultSuccessUrl("/default2" , true)
 //			config loguot
 			.and().logout()
 				.logoutUrl("/logout")
 				.logoutSuccessUrl("/login?logout")
 			
 			.and().httpBasic()
-			.and().logout()
 			// CSRF is enabled by default (will discuss later)
 			.and().csrf().disable();
 		

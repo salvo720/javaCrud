@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,8 +20,11 @@ public class Elemento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	indica che si tratta di una chaive primaria e che e autoincrement , lato server del database
 	private int id;
+	@Column(nullable = false, unique = true , length = 50)
 	private String nome;
+	@Column(nullable = false, unique = false , length = 50)
 	private String serialeprodotto;
+	@Column(nullable = false, unique = false , length = 50)
 	private int quantita;
 
 //	getter and setter 

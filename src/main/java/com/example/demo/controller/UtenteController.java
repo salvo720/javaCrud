@@ -25,6 +25,16 @@ public class UtenteController {
 
 	@Autowired
 	private ServiceUtente serviceUtente;
+	
+//	Default per spring security login 
+	@RequestMapping(value="/default2",method=RequestMethod.GET)
+	public String defaultMethod(String[] args  ,HttpServletRequest request)	{
+		if (request.isUserInRole("ADMIN")) {
+			return "redirect:/elementiView/";
+			}
+		return "redirect:/";
+	}
+
 
 //	/ e login portano allo stesso link  
 //	per poter prendere i dati del login dobbiamo creare un oggetto con i dati del for che mandiamo 
@@ -33,13 +43,13 @@ public class UtenteController {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		model.addAttribute("utente", new Utente(email, password));
-		return "login";
+		return "/login";
 	}
 
 //	/ e login coincidono 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String undefinePage() {
-		return "redirect:login";
+		return "redirect:/login";
 
 	}
 
@@ -47,13 +57,14 @@ public class UtenteController {
 	public String loginCheck(@ModelAttribute("utente") Utente utente, Model model) throws Exception {
 
 		Utente UtenteAuth = serviceUtente.loginAuth(utente.getEmail(), utente.getPassword());
-//		System.out.println("UtenteAuth :" + UtenteAuth);
-//		System.out.println("Utente.getUsername() :" + utente.getUsername());
+		System.out.println("UtenteAuth :" + UtenteAuth);
+		System.out.println("Utente.getUsername() :" + utente.getEmail());
 //		guard condition 
 		if ( Objects.isNull(UtenteAuth) ) {
-//		TODO: Mostrare l'eerore nella pagina html 
+//		TODO: Mostrare l'errore nella pagina html 
 			String errorMessage = "user not register in db";
 			model.addAttribute("errorMessage", errorMessage);
+			System.out.println("error");
 			return "redirect:/login";
 		}
 
@@ -61,7 +72,7 @@ public class UtenteController {
 
 	}
 
-	@RequestMapping(value = "login2", method = RequestMethod.GET)
+	@RequestMapping(value = "/login2", method = RequestMethod.GET)
 	public String login2(HttpServletRequest request, Model model) {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -70,11 +81,12 @@ public class UtenteController {
 
 	}
 
-	@RequestMapping(value = "login2Check", method = RequestMethod.POST)
+	@RequestMapping(value = "/login2Check", method = RequestMethod.POST)
 	public String login2Check(@ModelAttribute("utente") Utente utente, Model model) {
 
 		Utente utentedb = serviceUtente.loginAuth(utente.getEmail(), utente.getPassword());
-
+//		System.out.println("utentedb :" + utentedb.getEmail() + utentedb.getPassword());
+		
 		if ( utentedb == null ) {
 			model.addAttribute("errorMessage", "email or password invalid ");
 			return "login2";
@@ -92,7 +104,7 @@ public class UtenteController {
 
 // Varie can be deleted after 25-09-2022 ------------------------------------------------------------------------------------------------
 
-	@RequestMapping(value = "ciao", method = RequestMethod.GET)
+	@RequestMapping(value = "/ciao", method = RequestMethod.GET)
 	@ResponseBody
 	public ArrayList ciao() {
 

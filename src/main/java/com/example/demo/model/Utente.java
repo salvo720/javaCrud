@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,8 +24,11 @@ public class Utente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	identifica un campo autoincremnet 
 	private int id;
+	@Column(nullable = false, unique = true , length = 50)
 	private String nickname;
+	@Column(nullable = false, unique = true , length = 50)
 	private String email;
+	@Column(nullable = false , length = 120)
 	private String password;
 
 //	getter and setter 
